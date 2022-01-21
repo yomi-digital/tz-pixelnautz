@@ -14,7 +14,7 @@ async function main() {
         console.log('Fetching token metadata..')
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
         const fa2 = nft.with(Fa2);
-        const meta = await fa2.tokensMetadata([1, 2]);
+        const meta = await fa2.tokensMetadata([1, 2, 3]);
         console.log(meta)
     } else {
         console.log('Can\'t access tzApi')

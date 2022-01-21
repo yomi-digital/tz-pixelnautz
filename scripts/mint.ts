@@ -18,7 +18,7 @@ async function main() {
     if (tzApi !== undefined) {
         console.log('Minting tokens..')
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
-        const tokens = [1, 2].map(tokenMeta);
+        const tokens = [3].map(tokenMeta);
         const owner = configs.minter_address
         try {
             await runMethod(nft.mintTokens([{ owner, tokens }]))
