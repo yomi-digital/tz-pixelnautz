@@ -20,8 +20,12 @@ async function main() {
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
         const tokens = [1, 2].map(tokenMeta);
         const owner = configs.minter_address
-        await runMethod(nft.mintTokens([{ owner, tokens }]))
-        console.log('Nft minted!');
+        try {
+            await runMethod(nft.mintTokens([{ owner, tokens }]))
+            console.log('Nft minted!');
+        } catch (e) {
+            console.log(e)
+        }
     } else {
         console.log('Can\'t access tzApi')
     }
