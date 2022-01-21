@@ -10,10 +10,9 @@ export type TestApi = {
   alice: TezosApi;
 };
 
-export async function connect(): Promise<TestApi> {
+export async function connect(lambdaView: string): Promise<TestApi> {
   const api = await flextesaApi('http://localhost:20000');
   await awaitForSandbox(api.bob.toolkit);
-  const lambdaView = await originateLambdaViewContract(api.bob.toolkit);
   return {
     bob: api.bob.useLambdaView(lambdaView),
     alice: api.alice.useLambdaView(lambdaView)

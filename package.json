@@ -11,7 +11,10 @@
     "build": "yarn lerna run build",
     "sandbox": "yarn start-sandbox",
     "compile-contract": "ts-node ./scripts/compile-contract.ts",
-    "deploy": "ts-node ./scripts/deploy.ts"
+    "deploy": "ts-node ./scripts/deploy.ts",
+    "addminter": "ts-node ./scripts/addminter.ts",
+    "mint": "ts-node ./scripts/mint.ts",
+    "minted": "ts-node ./scripts/minted.ts"
   },
   "devDependencies": {
     "@types/configstore": "^5.0.1",

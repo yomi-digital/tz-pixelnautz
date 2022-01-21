@@ -21,5 +21,8 @@
 		"homepage": "https://nfts.yomi.digital/#/colletions/astronaut-ai",
 		"authors": ["YOMI <> hey@yomi.digital"],
 		"source":"https://github.com/yomi-digital/tz-astronaut-ai"
-	}
+	},
+	"lambdaView": "KT1SojhaJjZiwbpRYTduordMaaf44a3GT4hz",
+	"contract_address": "KT1Uz1BsWoonfp8ZNXK8fWGiQaJbAJBHmkFd",
+	"minter_address": "tz1YPSCGWXwBdTncK2aCctSZAXWvGsGwVJqU"
 }
