@@ -1,0 +1,22 @@
+{
+  "name": "tz-astronaut-ai",
+  "description": "FA2 non-fungible tokens on Tezos",
+  "version": "2.0.10",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oxheadalpha/nft-tutorial.git"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn lerna run build",
+    "build:watch": "tsc -w -p .",
+    "test": "yarn lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
