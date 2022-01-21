@@ -1,6 +1,6 @@
 import * as kleur from 'kleur';
 import { BigNumber } from 'bignumber.js';
-import { address, Fa2, runMethod, runBatch } from '@oxheadalpha/fa2-interfaces';
+import { address, Fa2, runMethod, runBatch } from '../../fa2-interfaces';
 import { Nft } from '../src/nft-interface';
 
 import { TestApi, bootstrap } from './test-bootstrap';

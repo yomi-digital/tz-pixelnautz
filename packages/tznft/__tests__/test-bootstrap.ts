@@ -1,9 +1,9 @@
 import * as kleur from 'kleur';
 import { TezosToolkit, VIEW_LAMBDA } from '@taquito/taquito';
 import { InMemorySigner } from '@taquito/signer';
-import { awaitForSandbox } from '@oxheadalpha/tezos-tools';
-import { address } from '@oxheadalpha/fa2-interfaces';
-import { TezosApi, tezosApi } from '@oxheadalpha/fa2-interfaces';
+import { awaitForSandbox } from '../../tezos-tools';
+import { address } from '../../fa2-interfaces';
+import { TezosApi, tezosApi } from '../../fa2-interfaces';
 
 export type TestApi = {
   bob: TezosApi;

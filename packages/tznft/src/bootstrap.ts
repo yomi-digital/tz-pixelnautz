@@ -2,7 +2,7 @@ import * as kleur from 'kleur';
 import { loadUserConfig, lambdaViewKey } from './config-util';
 import { createToolkit, createToolkitWithoutSigner } from './contracts';
 import Configstore from 'configstore';
-import { startSandbox, killSandbox, awaitForSandbox } from '@oxheadalpha/tezos-tools';
+import { startSandbox, killSandbox, awaitForSandbox } from '../../tezos-tools';
 import { TezosToolkit, VIEW_LAMBDA } from '@taquito/taquito';
 
 export async function bootstrap(): Promise<void> {

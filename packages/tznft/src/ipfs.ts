@@ -1,4 +1,4 @@
-import { pinFile, pinDirectory } from '@oxheadalpha/tezos-tools';
+import { pinFile, pinDirectory } from '../../tezos-tools';
 import { loadUserConfig } from './config-util';
 import * as kleur from 'kleur';
 import * as path from 'path';

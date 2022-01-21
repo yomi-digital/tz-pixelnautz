@@ -1,4 +1,4 @@
-import { ligo } from '@oxheadalpha/tezos-tools';
+import { ligo } from '../../tezos-tools';
 
 const main = async () => {
   const ligoEnv = ligo();

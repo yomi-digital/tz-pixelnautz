@@ -3,7 +3,7 @@ import path from 'path';
 import * as fs from 'fs';
 import { loadFile, loadUserConfig } from './config-util';
 import { resolveAlias2Address } from './config-aliases';
-import { validateTzip16, validateTzip21 } from '@oxheadalpha/fa2-interfaces';
+import { validateTzip16, validateTzip21 } from '../../fa2-interfaces';
 
 export function createCollectionMeta(name: string): void {
   const meta = {

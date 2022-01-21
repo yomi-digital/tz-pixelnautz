@@ -1,6 +1,6 @@
 import * as kleur from 'kleur';
 import { TezosToolkit } from '@taquito/taquito';
-import { Contract } from '@oxheadalpha/fa2-interfaces';
+import { Contract } from '../../fa2-interfaces';
 
 /**
  * Originate a contract on blockchain

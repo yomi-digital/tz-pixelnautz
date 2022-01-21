@@ -1,10 +1,10 @@
 import * as kleur from 'kleur';
 import * as path from 'path';
-import { address } from "@oxheadalpha/fa2-interfaces";
+import { address } from "../../fa2-interfaces";
 import { TezosToolkit } from "@taquito/taquito";
 import { loadFile } from "../src/config-util";
 import { createNftStorage, createTokenMetadata, NftContract } from "../src/nft-interface";
-import { originateContract } from '@oxheadalpha/tezos-tools';
+import { originateContract } from '../../tezos-tools';
 
 const tzip16Meta = {
   name: 'Astronauts in the space',

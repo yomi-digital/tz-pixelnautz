@@ -17,10 +17,10 @@ import {
   resolveAlias2Address,
   addAlias
 } from './config-aliases';
-import * as fa2 from '@oxheadalpha/fa2-interfaces';
-import { Fa2 } from '@oxheadalpha/fa2-interfaces';
+import * as fa2 from '../../fa2-interfaces';
+import { Fa2 } from '../../fa2-interfaces';
 import { createNftStorage, createTokenMetadata, Nft } from './nft-interface';
-import { originateContract } from '@oxheadalpha/tezos-tools';
+import { originateContract } from '../../tezos-tools';
 
 export async function createToolkit(
   address_or_alias: string,

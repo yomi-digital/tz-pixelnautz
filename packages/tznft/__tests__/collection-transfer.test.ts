@@ -7,7 +7,7 @@ import {
   runBatch,
   Transfer,
   Fa2Contract
-} from '@oxheadalpha/fa2-interfaces';
+} from '../../fa2-interfaces';
 import { Nft } from '../src/nft-interface';
 
 import { TestApi, bootstrap } from './test-bootstrap';

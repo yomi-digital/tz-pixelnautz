@@ -11,7 +11,7 @@ import {
   address,
   TokenMetadataInternal,
   bytes
-} from '@oxheadalpha/fa2-interfaces';
+} from '../../fa2-interfaces';
 
 export interface MintParam {
   owner: address;
