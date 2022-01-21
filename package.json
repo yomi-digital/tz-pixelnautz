@@ -3,20 +3,23 @@
   "description": "FA2 non-fungible tokens on Tezos",
   "version": "2.0.10",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/oxheadalpha/nft-tutorial.git"
-  },
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build": "yarn lerna run build",
-    "build:watch": "tsc -w -p .",
-    "test": "yarn lerna run test"
+    "sandbox": "yarn start-sandbox",
+    "compile-contract": "ts-node ./scripts/compile-contract.ts",
+    "deploy": "ts-node ./scripts/deploy.ts"
   },
   "devDependencies": {
+    "@types/configstore": "^5.0.1",
+    "configstore": "^6.0.0",
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "@taquito/signer": "^11.1.0",
+    "minimist": "^1.2.5"
   }
 }
