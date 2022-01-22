@@ -4,16 +4,21 @@ import { InMemorySigner } from '@taquito/signer';
 import { awaitForSandbox } from '../../packages/tezos-tools/dist';
 import { address } from '../../packages/fa2-interfaces/dist';
 import { TezosApi, tezosApi } from '../../packages/fa2-interfaces/dist';
+import fs from 'fs'
 
 export type TestApi = {
   bob: TezosApi;
   alice: TezosApi;
 };
 
-export async function bootstrap(): Promise<TestApi> {
+export async function bootstrap(environment: string): Promise<TestApi> {
   const api = await flextesaApi('http://localhost:20000');
   await awaitForSandbox(api.bob.toolkit);
   const lambdaView = await originateLambdaViewContract(api.bob.toolkit);
+  console.log('Updating lambda view in ' + environment + '.json')
+  const configs = JSON.parse(fs.readFileSync('./configs/' + environment + '.json').toString())
+  configs.lambdaView = lambdaView
+  fs.writeFileSync('./configs/' + environment + '.json', JSON.stringify(configs))
   return {
     bob: api.bob.useLambdaView(lambdaView),
     alice: api.alice.useLambdaView(lambdaView)

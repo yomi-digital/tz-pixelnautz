@@ -22,9 +22,9 @@ const tzip16Meta = {
 
 async function main() {
     let tzApi
-    if (argv._[0] === "sandbox") {
+    if (argv._[0] === "sandbox" && configs.lambdaView === "") {
         console.log('Running in sandbox mode..')
-        tzApi = await bootstrap();
+        tzApi = await bootstrap(argv._[0]);
     } else if (argv._[0] === "mainnet") {
         console.log('Running in mainnet mode..')
         tzApi = await connect(configs.lambdaView);
@@ -40,6 +40,8 @@ async function main() {
         );
         const contract = await originateContract(tzt, code, storage, 'nft');
         console.log('Contract deployed, address is:', contract.address);
+        configs.contract_address = contract.address;
+        fs.writeFileSync('./configs/' + argv._[0] + '.json', JSON.stringify(configs));
     } else {
         console.log('Can\'t access tzApi')
     }
