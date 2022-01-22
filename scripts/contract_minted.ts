@@ -14,7 +14,7 @@ async function main() {
         console.log('Fetching token metadata..')
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
         const fa2 = nft.with(Fa2);
-        let i = 1
+        let i = 0
         let errored = false
         while (!errored) {
             try {

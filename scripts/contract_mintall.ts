@@ -23,16 +23,19 @@ async function main() {
     let tzApi
     tzApi = await connect(configs.lambdaView)
     if (tzApi !== undefined) {
-        console.log('Minting tokens..')
-        const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
-        const tokens = tokenMeta(argv._[1])
-        if (tokens !== undefined && tokens !== false) {
-            const owner = configs.minter_address
-            try {
-                await runMethod(nft.mintTokens([{ owner, tokens }]))
-                console.log('Nft minted!');
-            } catch (e) {
-                console.log(e)
+        for (let i = 0; i <= 100; i++) {
+            console.log('Minting token #' + i + '..')
+            const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
+            const tokens = tokenMeta(i)
+            if (tokens !== undefined && tokens !== false) {
+                const owner = configs.minter_address
+                try {
+                    await runMethod(nft.mintTokens([{ owner, tokens }]))
+                    console.log('Nft #' + i + ' minted!');
+                    console.log('--')
+                } catch (e) {
+                    console.log(e)
+                }
             }
         }
     } else {
@@ -40,8 +43,4 @@ async function main() {
     }
 }
 
-if (argv._[1] !== undefined) {
-    main()
-} else {
-    console.log('Define token id first like `npm run collection:mint sandbox 1`')
-}
+main()
