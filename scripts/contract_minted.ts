@@ -11,23 +11,21 @@ async function main() {
     let tzApi
     tzApi = await connect(configs.lambdaView)
     if (tzApi !== undefined) {
-        console.log('Fetching token metadata..')
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
         const fa2 = nft.with(Fa2);
-        let i = 0
-        let errored = false
-        while (!errored) {
-            try {
-                const meta = await fa2.tokensMetadata([i]);
-                console.log(meta)
-                i++
-            } catch {
-                errored = true
-            }
+        try {
+            console.log('Fetching metadata for token ' + argv._[1] + '..')
+            const meta = await fa2.tokensMetadata([argv._[1]]);
+            console.log(meta)
+        } catch (e) {
+            console.log('Fetching errored, trying again..')
         }
     } else {
         console.log('Can\'t access tzApi')
     }
 }
-
-main()
+if (argv._[1] !== undefined) {
+    main()
+} else {
+    console.log('To view a metadata please use following call `npm run contract:minted sandbox 1`')
+}

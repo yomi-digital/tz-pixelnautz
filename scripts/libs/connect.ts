@@ -1,8 +1,7 @@
-import * as kleur from 'kleur';
-import { TezosToolkit, VIEW_LAMBDA } from '@taquito/taquito';
+import { TezosToolkit } from '@taquito/taquito';
+import { Handler, IpfsHttpHandler, TezosStorageHandler, MetadataProvider, Tzip16Module } from '@taquito/tzip16';
 import { InMemorySigner } from '@taquito/signer';
 import { awaitForSandbox } from '../../packages/tezos-tools/dist';
-import { address } from '../../packages/fa2-interfaces/dist';
 import { TezosApi, tezosApi } from '../../packages/fa2-interfaces/dist';
 
 export type TestApi = {
@@ -41,23 +40,11 @@ async function createToolkit(
   const signer = await InMemorySigner.fromSecretKey(secretKey);
   const toolkit = new TezosToolkit(rpc);
   toolkit.setProvider({ rpc, signer });
+  /*const customHandler = new Map<string, Handler>([
+    ['ipfs', new IpfsHttpHandler('ipfs.yomi.digital')]
+  ]);
+  const customMetadataProvider = new MetadataProvider(customHandler);
+  toolkit.addExtension(new Tzip16Module(customMetadataProvider));*/
   return toolkit;
 }
 
-async function originateLambdaViewContract(
-  tezos: TezosToolkit
-): Promise<address> {
-  console.log(kleur.yellow(`originating Taquito lambda view contract...`));
-  const op = await tezos.contract.originate({
-    code: VIEW_LAMBDA.code,
-    storage: VIEW_LAMBDA.storage
-  });
-  const lambdaContract = await op.contract();
-
-  console.log(
-    kleur.yellow(
-      `originated Taquito lambda view ${kleur.green(lambdaContract.address)}`
-    )
-  );
-  return lambdaContract.address;
-}
