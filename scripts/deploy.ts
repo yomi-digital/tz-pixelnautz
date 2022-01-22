@@ -27,7 +27,7 @@ async function main() {
         tzApi = await bootstrap();
     } else if (argv._[0] === "mainnet") {
         console.log('Running in mainnet mode..')
-        tzApi = await connect();
+        tzApi = await connect(configs.lambdaView);
     }
     if (tzApi !== undefined) {
         console.log('Originating NFT collection contract...');

@@ -14,7 +14,9 @@
     "deploy": "ts-node ./scripts/deploy.ts",
     "addminter": "ts-node ./scripts/addminter.ts",
     "mint": "ts-node ./scripts/mint.ts",
-    "minted": "ts-node ./scripts/minted.ts"
+    "minted": "ts-node ./scripts/minted.ts",
+    "freeze": "ts-node ./scripts/freeze.ts",
+    "unfreeze": "ts-node ./scripts/unfreeze.ts"
   },
   "devDependencies": {
     "@types/configstore": "^5.0.1",

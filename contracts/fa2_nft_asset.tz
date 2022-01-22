@@ -15,7 +15,8 @@
                    (pair (address %owner)
                          (list %tokens (pair (nat %token_id) (map %token_info string bytes)))))
                 (unit %mint_freeze)))
-        (or %minter_admin (address %add_minter) (address %remove_minter))) ;
+        (or (unit %mint_unfreeze)
+            (or %minter_admin (address %add_minter) (address %remove_minter)))) ;
   storage
     (pair (pair (pair (pair %admin (pair (address %admin) (bool %paused)) (option %pending_admin address))
                       (pair %assets
@@ -517,29 +518,54 @@
              DIG 4 ;
              DIG 5 ;
              DROP 3 ;
-             SWAP ;
-             DUP ;
-             DUG 2 ;
-             CAR ;
-             CAR ;
-             CAR ;
-             DIG 3 ;
-             SWAP ;
-             EXEC ;
-             DROP ;
-             SWAP ;
-             DUP ;
-             DUG 2 ;
-             CDR ;
-             SWAP ;
              IF_LEFT
-               { SWAP ; UNIT ; DIG 2 ; SWAP ; SOME ; SWAP ; UPDATE ; NIL operation ; PAIR }
-               { NONE unit ; SWAP ; UPDATE ; NIL operation ; PAIR } ;
-             UNPAIR ;
-             SWAP ;
-             DIG 2 ;
-             CAR ;
-             PAIR ;
-             SWAP ;
-             PAIR } } }
+               { DROP ;
+                 DUP ;
+                 CAR ;
+                 CAR ;
+                 CAR ;
+                 DIG 2 ;
+                 SWAP ;
+                 EXEC ;
+                 DROP ;
+                 DUP ;
+                 CDR ;
+                 PUSH bool False ;
+                 DUP 3 ;
+                 CAR ;
+                 CDR ;
+                 CAR ;
+                 PAIR ;
+                 DIG 2 ;
+                 CAR ;
+                 CAR ;
+                 PAIR ;
+                 PAIR ;
+                 NIL operation ;
+                 PAIR }
+               { SWAP ;
+                 DUP ;
+                 DUG 2 ;
+                 CAR ;
+                 CAR ;
+                 CAR ;
+                 DIG 3 ;
+                 SWAP ;
+                 EXEC ;
+                 DROP ;
+                 SWAP ;
+                 DUP ;
+                 DUG 2 ;
+                 CDR ;
+                 SWAP ;
+                 IF_LEFT
+                   { SWAP ; UNIT ; DIG 2 ; SWAP ; SOME ; SWAP ; UPDATE ; NIL operation ; PAIR }
+                   { NONE unit ; SWAP ; UPDATE ; NIL operation ; PAIR } ;
+                 UNPAIR ;
+                 SWAP ;
+                 DIG 2 ;
+                 CAR ;
+                 PAIR ;
+                 SWAP ;
+                 PAIR } } } }
 

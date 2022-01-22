@@ -24,6 +24,7 @@ type asset_entrypoints =
   | Minter_admin of minter_admin_entrypoints
   | Mint of mint_param list
   | Mint_freeze
+  | Mint_unfreeze
 
 let nft_asset_main(param, storage : asset_entrypoints * asset_storage)
     : (operation list) * asset_storage =
@@ -47,6 +48,10 @@ let nft_asset_main(param, storage : asset_entrypoints * asset_storage)
   | Mint_freeze ->
     let _ = fail_if_not_admin storage.admin in
     ([] : operation list), {storage with mint_freeze = true; }
+
+  | Mint_unfreeze ->
+    let _ = fail_if_not_admin storage.admin in
+    ([] : operation list), {storage with mint_freeze = false; }
 
   | Mint m ->
     let _ = fail_if_paused storage.admin in

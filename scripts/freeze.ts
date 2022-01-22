@@ -16,13 +16,11 @@ async function main() {
     let tzApi
     tzApi = await connect(configs.lambdaView)
     if (tzApi !== undefined) {
-        console.log('Minting tokens..')
+        console.log('Freezing collection..')
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
-        const tokens = [1].map(tokenMeta);
-        const owner = configs.minter_address
         try {
-            await runMethod(nft.mintTokens([{ owner, tokens }]))
-            console.log('Nft minted!');
+            await runMethod(nft.freezeCollection())
+            console.log('Collection freezed!');
         } catch (e) {
             console.log(e)
         }
