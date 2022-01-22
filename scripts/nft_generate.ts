@@ -40,7 +40,7 @@ async function main() {
                 let metadata = {
                     "decimals": 0,
                     "isBooleanAmount": true,
-                    "name": "Pixelnauts #" + String(k).padStart(3, '0'),
+                    "name": "Pixelnaut #" + String(k).padStart(3, '0'),
                     "description": description,
                     "tags": [
                         "ai",

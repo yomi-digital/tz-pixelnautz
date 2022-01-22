@@ -4,7 +4,7 @@ import { createNftStorage, createTokenMetadata, NftContract } from "./libs/nft-i
 import { originateContract } from '../packages/tezos-tools/dist';
 const argv = require('minimist')(process.argv.slice(2));
 const fs = require('fs');
-const configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").toString())
+let configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").toString())
 
 // Defining main metadata for contract
 const tzip16Meta = {
@@ -23,7 +23,7 @@ const tzip16Meta = {
 
 async function main() {
     let tzApi
-    if (argv._[0] === "sandbox" && configs.lambdaView === "") {
+    if (argv._[0] === "sandbox") {
         console.log('Running in sandbox mode..')
         tzApi = await bootstrap(argv._[0]);
     } else if (argv._[0] === "mainnet") {
@@ -40,6 +40,7 @@ async function main() {
             JSON.stringify(tzip16Meta, null, 2)
         );
         const contract = await originateContract(tzt, code, storage, 'nft');
+        configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").toString())
         console.log('Contract deployed, address is:', contract.address);
         configs.contract_address = contract.address;
         fs.writeFileSync('./configs/' + argv._[0] + '.json', JSON.stringify(configs));

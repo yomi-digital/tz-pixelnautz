@@ -29,8 +29,13 @@ async function main() {
         if (tokens !== undefined && tokens !== false) {
             const owner = configs.minter_address
             try {
-                await runMethod(nft.mintTokens([{ owner, tokens }]))
+                const transaction = await runMethod(nft.mintTokens([{ owner, tokens }]))
                 console.log('Nft minted!');
+                console.log('--')
+                console.log('Transaction Hash:', transaction.hash)
+                console.log('Transaction Raw:', transaction.raw)
+                console.log('Transaction Results:', transaction.results)
+                console.log('--')
             } catch (e) {
                 console.log(e)
             }
