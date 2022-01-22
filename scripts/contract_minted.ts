@@ -13,19 +13,27 @@ async function main() {
     if (tzApi !== undefined) {
         const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
         const fa2 = nft.with(Fa2);
-        try {
-            console.log('Fetching metadata for token ' + argv._[1] + '..')
-            const meta = await fa2.tokensMetadata([argv._[1]]);
-            console.log(meta)
-        } catch (e) {
-            console.log('Fetching errored, trying again..')
+        let i = 0
+        let errored = false
+        let retries = 0
+        while (!errored) {
+            try {
+                console.log('Fetching metadata for token ' + i + '..')
+                const meta = await fa2.tokensMetadata([i]);
+                console.log(meta)
+                i++
+                retries = 0
+            } catch (e) {
+                console.log('Fetching errored, trying again..')
+                retries++
+                if (retries > 20) {
+                    errored = true
+                }
+            }
         }
     } else {
         console.log('Can\'t access tzApi')
     }
 }
-if (argv._[1] !== undefined) {
-    main()
-} else {
-    console.log('To view a metadata please use following call `npm run contract:minted sandbox 1`')
-}
+
+main()
