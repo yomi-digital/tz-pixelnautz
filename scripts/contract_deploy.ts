@@ -6,6 +6,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const fs = require('fs');
 const configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").toString())
 
+// Defining main metadata for contract
 const tzip16Meta = {
     name: configs.contract.name,
     description: configs.contract.description,

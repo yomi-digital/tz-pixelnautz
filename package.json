@@ -10,13 +10,15 @@
   "scripts": {
     "build": "yarn lerna run build",
     "sandbox": "yarn start-sandbox",
-    "compile-contract": "ts-node ./scripts/compile-contract.ts",
-    "deploy": "ts-node ./scripts/compile-contract && ts-node ./scripts/deploy.ts",
-    "addminter": "ts-node ./scripts/addminter.ts",
-    "mint": "ts-node ./scripts/mint.ts",
-    "minted": "ts-node ./scripts/minted.ts",
-    "freeze": "ts-node ./scripts/freeze.ts",
-    "unfreeze": "ts-node ./scripts/unfreeze.ts"
+    "contract:compile": "ts-node ./scripts/contract_compile.ts",
+    "contract:deploy": "ts-node ./scripts/contract_compile && ts-node ./scripts/contract_deploy.ts",
+    "contract:addminter": "ts-node ./scripts/contract_addminter.ts",
+    "contract:mint": "ts-node ./scripts/contract_mint.ts",
+    "contract:minted": "ts-node ./scripts/contract_minted.ts",
+    "contract:freeze": "ts-node ./scripts/contract_freeze.ts",
+    "contract:unfreeze": "ts-node ./scripts/contract_unfreeze.ts",
+    "nfts:generate": "ts-node ./scripts/nft_generate.ts",
+    "nfts:upload": "ts-node ./scripts/nft_upload.ts"
   },
   "devDependencies": {
     "@types/configstore": "^5.0.1",
@@ -24,7 +26,9 @@
     "lerna": "^4.0.0"
   },
   "dependencies": {
+    "@pinata/sdk": "^1.1.23",
     "@taquito/signer": "^11.1.0",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.5",
+    "openai": "^2.0.1"
   }
 }
