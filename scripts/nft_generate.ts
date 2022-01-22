@@ -23,6 +23,7 @@ async function generateDescription() {
 
 async function main() {
     const imgs = fs.readdirSync('./nfts/imgs')
+    const pinata = pinataSDK(keys.pinata_apiKey, keys.pinata_apiSecret);
     for (let k in imgs) {
         if (!fs.existsSync('./nfts/metadata/' + k + '.json')) {
             console.log('Generating metadata for NFT #' + k)
@@ -32,7 +33,6 @@ async function main() {
             console.log('--')
             console.log('Uploading image to IPFS..')
             try {
-                const pinata = pinataSDK(keys.pinata_apiKey, keys.pinata_apiSecret);
                 const fileCID = await pinata.pinFileToIPFS(fs.createReadStream('./nfts/imgs/' + imgs[k]));
                 console.log('IPFS CID is:', fileCID.IpfsHash)
                 console.log('--')
