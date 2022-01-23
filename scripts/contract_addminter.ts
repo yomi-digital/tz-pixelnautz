@@ -7,12 +7,12 @@ const configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").t
 
 async function main() {
     let tzApi
-    tzApi = await connect(configs.lambdaView)
+    tzApi = await connect(configs.lambdaView, configs.provider, configs.privKey)
     if (tzApi !== undefined) {
-        console.log('Adding bob to minters so it can mint..')
-        const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
+        console.log('Adding ' + configs.minter_address + ' to minters..')
+        const nft = (await tzApi.at(configs.contract_address)).with(Nft);
         await runMethod(nft.addMinter(configs.minter_address))
-        console.log('Bob added to minter!');
+        console.log(configs.minter_address + ' added to minter!');
     } else {
         console.log('Can\'t access tzApi')
     }

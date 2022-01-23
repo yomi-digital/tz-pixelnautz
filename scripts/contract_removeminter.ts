@@ -1,29 +1,18 @@
 import { connect } from "./libs/connect";
-import { runMethod, Fa2 } from '../packages/fa2-interfaces/dist';
-import { Nft, createTokenMetadata } from './libs/nft-interface';
-
+import { runMethod } from '../packages/fa2-interfaces/dist';
+import { Nft } from './libs/nft-interface';
 const argv = require('minimist')(process.argv.slice(2));
 const fs = require('fs');
 const configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").toString())
-
-export const tokenMeta = (tokenId: number) =>
-    createTokenMetadata(
-        tokenId,
-        'ipfs://QmbYcvb4B6dtEGAmHcUM9ZaMDBBJLFLh6Jsno218M9iQMU'
-    );
 
 async function main() {
     let tzApi
     tzApi = await connect(configs.lambdaView, configs.provider, configs.privKey)
     if (tzApi !== undefined) {
-        console.log('Freezing collection..')
+        console.log('Removing ' + configs.minter_address + ' from minters..')
         const nft = (await tzApi.at(configs.contract_address)).with(Nft);
-        try {
-            await runMethod(nft.freezeCollection())
-            console.log('Collection freezed!');
-        } catch (e) {
-            console.log(e)
-        }
+        await runMethod(nft.removeMinter(configs.minter_address))
+        console.log(configs.minter_address+ ' removed from minters!');
     } else {
         console.log('Can\'t access tzApi')
     }

@@ -26,20 +26,19 @@ async function main() {
     if (argv._[0] === "sandbox") {
         console.log('Running in sandbox mode..')
         tzApi = await bootstrap(argv._[0]);
-    } else if (argv._[0] === "mainnet") {
+    } else {
         console.log('Running in mainnet mode..')
-        tzApi = await connect(configs.lambdaView);
+        tzApi = await connect(configs.lambdaView, configs.provider, configs.privKey);
     }
     if (tzApi !== undefined) {
         console.log('Originating NFT collection contract...');
-        const tzt = tzApi.bob.toolkit
         const code = await fs.readFileSync('./contracts/fa2_nft_asset.tz').toString()
-        const ownerAddress = await tzt.signer.publicKeyHash();
+        const ownerAddress = await tzApi.toolkit.signer.publicKeyHash();
         const storage = createNftStorage(
             ownerAddress,
             JSON.stringify(tzip16Meta, null, 2)
         );
-        const contract = await originateContract(tzt, code, storage, 'nft');
+        const contract = await originateContract(tzApi.toolkit, code, storage, 'nft');
         configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").toString())
         console.log('Contract deployed, address is:', contract.address);
         configs.contract_address = contract.address;

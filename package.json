@@ -13,6 +13,7 @@
     "contract:compile": "ts-node ./scripts/contract_compile.ts",
     "contract:deploy": "ts-node ./scripts/contract_compile && ts-node ./scripts/contract_deploy.ts",
     "contract:addminter": "ts-node ./scripts/contract_addminter.ts",
+    "contract:removeminter": "ts-node ./scripts/contract_removeminter.ts",
     "contract:mint:one": "ts-node ./scripts/contract_mint.ts",
     "contract:mint:all": "ts-node ./scripts/contract_mintall.ts",
     "contract:minted": "ts-node ./scripts/contract_minted.ts",

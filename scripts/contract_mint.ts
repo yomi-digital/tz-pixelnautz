@@ -21,10 +21,10 @@ const tokenMeta = (tokenId: number) => {
 
 async function main() {
     let tzApi
-    tzApi = await connect(configs.lambdaView)
+    tzApi = await connect(configs.lambdaView, configs.provider, configs.privKey)
     if (tzApi !== undefined) {
         console.log('Minting tokens..')
-        const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
+        const nft = (await tzApi.at(configs.contract_address)).with(Nft);
         const tokens = tokenMeta(argv._[1])
         if (tokens !== undefined && tokens !== false) {
             const owner = configs.minter_address

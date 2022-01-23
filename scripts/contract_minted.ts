@@ -9,9 +9,10 @@ const configs = JSON.parse(fs.readFileSync('./configs/' + argv._[0] + ".json").t
 
 async function main() {
     let tzApi
-    tzApi = await connect(configs.lambdaView)
+    tzApi = await connect(configs.lambdaView, configs.provider, configs.privKey)
     if (tzApi !== undefined) {
-        const nft = (await tzApi.bob.at(configs.contract_address)).with(Nft);
+        const instance = await tzApi.at(configs.contract_address);
+        const nft = instance.with(Nft);
         const fa2 = nft.with(Fa2);
         let i = 0
         let errored = false
