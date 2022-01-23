@@ -17,6 +17,7 @@
     "contract:mint:one": "ts-node ./scripts/contract_mint.ts",
     "contract:mint:all": "ts-node ./scripts/contract_mintall.ts",
     "contract:minted": "ts-node ./scripts/contract_minted.ts",
+    "contract:collection": "ts-node ./scripts/contract_collection.ts",
     "contract:freeze": "ts-node ./scripts/contract_freeze.ts",
     "contract:unfreeze": "ts-node ./scripts/contract_unfreeze.ts",
     "nfts:generate": "ts-node ./scripts/nft_generate.ts",
@@ -30,6 +31,7 @@
   "dependencies": {
     "@pinata/sdk": "^1.1.23",
     "@taquito/signer": "^11.1.0",
+    "axios": "^0.25.0",
     "minimist": "^1.2.5",
     "openai": "^2.0.1"
   }

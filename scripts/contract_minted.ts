@@ -14,23 +14,12 @@ async function main() {
         const instance = await tzApi.at(configs.contract_address);
         const nft = instance.with(Nft);
         const fa2 = nft.with(Fa2);
-        let i = 0
-        let errored = false
-        let retries = 0
-        while (!errored) {
-            try {
-                console.log('Fetching metadata for token ' + i + '..')
-                const meta = await fa2.tokensMetadata([i]);
-                console.log(meta)
-                i++
-                retries = 0
-            } catch (e) {
-                console.log('Fetching errored, trying again..')
-                retries++
-                if (retries > 20) {
-                    errored = true
-                }
-            }
+        try {
+            console.log('Fetching metadata for token ' + argv._[1] + '..')
+            const meta = await fa2.tokensMetadata([argv._[1]]);
+            console.log(meta)
+        } catch (e) {
+            console.log('Fetching errored, trying again..')
         }
     } else {
         console.log('Can\'t access tzApi')
