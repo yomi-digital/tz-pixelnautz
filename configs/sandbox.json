@@ -1,1 +1,17 @@
-{"activeNetwork":"sandbox","contract":{"name":"Pixelnautz","description":"An AI generated collection created by YOMI, a tech/creative web3 company.","homepage":"https://nfts.yomi.digital/#/colletions/pixelnautz","authors":["YOMI <> hey@yomi.digital"],"source":"https://github.com/yomi-digital/tz-pixelnautz"},"provider":"http://localhost:20000","privKey":"edsk3RFgDiCt7tWB2oe96w1eRw72iYiiqZPLu9nnEY23MYRp2d8Kkx","lambdaView":"KT1XsofQ1cuFyFzqZ8kuBodabDg4fL7xTvoz","contract_address":"KT1QpMEbbFmmWH9NHPjQCrCEjiqAqCpWwxpE","minter_address":"tz1YPSCGWXwBdTncK2aCctSZAXWvGsGwVJqU"}
+{
+    "activeNetwork": "sandbox",
+    "contract": {
+        "name": "Pixelnautz",
+        "description": "An AI generated collection created by YOMI, a tech/creative web3 company.",
+        "homepage": "https://nfts.yomi.digital/#/collections/pixelnautz",
+        "authors": [
+            "YOMI <> hey@yomi.digital"
+        ],
+        "source": "https://github.com/yomi-digital/tz-pixelnautz"
+    },
+    "provider": "http://localhost:20000",
+    "privKey": "edsk3RFgDiCt7tWB2oe96w1eRw72iYiiqZPLu9nnEY23MYRp2d8Kkx",
+    "lambdaView": "KT1XsofQ1cuFyFzqZ8kuBodabDg4fL7xTvoz",
+    "contract_address": "KT1QpMEbbFmmWH9NHPjQCrCEjiqAqCpWwxpE",
+    "minter_address": "tz1YPSCGWXwBdTncK2aCctSZAXWvGsGwVJqU"
+}
