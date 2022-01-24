@@ -1,4 +1,4 @@
-# Tezos Astronaut NFT
+# Tezos Pixelnautz
 
 YOMI Collection based on Tezos Blockchain.
 
